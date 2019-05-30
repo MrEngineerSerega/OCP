@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41FD5DB3-E122-4B30-A9AC-C7ECCB3739A9}</ProjectGuid>
+    <ProjectGuid>{A8AB57B1-6169-4E54-A500-8FCACC4DCEAA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>OCP</RootNamespace>
     <AssemblyName>OCP</AssemblyName>

@@ -1,9 +1,0 @@
-G:\Мой диск\GitHub\OCP\PCSide\OCP\bin\Debug\OCP.exe.config
-G:\Мой диск\GitHub\OCP\PCSide\OCP\bin\Debug\OCP.exe
-G:\Мой диск\GitHub\OCP\PCSide\OCP\bin\Debug\OCP.pdb
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.csprojAssemblyReference.cache
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.Properties.Resources.resources
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.csproj.GenerateResource.cache
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.csproj.CoreCompileInputs.cache
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.exe
-G:\Мой диск\GitHub\OCP\PCSide\OCP\obj\Debug\OCP.pdb
