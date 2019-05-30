@@ -9,6 +9,8 @@
 
 #include "MUX74HC4067.h"
 
+int oldPVals[16], curPVal;
+
 // Creates a MUX74HC4067 instance
 // 1st argument is the Arduino PIN to which the EN pin connects
 // 2nd-5th arguments are the Arduino PINs to which the S0-S3 pins connect
@@ -34,16 +36,16 @@ void loop()
 
   for (byte i = 0; i < 16; ++i)
   {
-    // Reads from channel i. Returns a value from 0 to 1023
-    data = mux.read(i);
-
-    Serial.print("Potentiometer at channel ");
-    Serial.print(i);
-    Serial.print(" is at ");
-    Serial.print((double)(data) * 100 / 1023);
-    Serial.println("%%");
-  }
-  Serial.println();
-  
-  delay(1500);
+    curPVal = round((double)(mux.read(i)) * 100 / 1023);
+    if (oldPVals[i] != curPVal){
+      Serial.print("Potentiometer at channel ");
+      Serial.print(i);
+      Serial.print(" is at ");
+      Serial.print(curPVal);
+      Serial.println("%%");
+      
+      oldPVals[i] = curPVal;
+    }
+    delay(10);
+  }  
 }
