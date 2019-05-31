@@ -9,25 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
+using MetroFramework.Forms;
+using MetroFramework.Controls;
 
 namespace OCP
 {
-    public partial class Form1 : Form
+    public partial class form1 : MetroForm
     {
         static SerialPort Serial = new SerialPort("COM4", 9600);
         Thread thSetPot = new Thread(SetPot);
-        static TrackBar[] relativePot = new TrackBar[5];
+        static MetroProgressSpinner[] relativePot = new MetroProgressSpinner[8];
         public delegate void InvokeDelegate();
-        static TextBox txt;
 
-        public Form1()
+        public form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            relativePot = new TrackBar[] { trackBar1, trackBar2, trackBar3, trackBar4, trackBar5 };
+            relativePot = new MetroProgressSpinner[] { metroProgressSpinner1, metroProgressSpinner2, metroProgressSpinner3, metroProgressSpinner4, metroProgressSpinner5, metroProgressSpinner6, metroProgressSpinner7, metroProgressSpinner7 };
         }
 
         private void Button1_Click(object sender, EventArgs e)
