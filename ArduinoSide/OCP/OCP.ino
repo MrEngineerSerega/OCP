@@ -38,11 +38,14 @@ void loop()
   {
     curPVal = round((double)(mux.read(i)) * 100 / 1023);
     if (oldPVals[i] != curPVal){
-      Serial.print("Potentiometer at channel ");
+      if (i < 8){
+        Serial.print("0");
+      }else{
+        Serial.print("1");
+      }
       Serial.print(i);
-      Serial.print(" is at ");
-      Serial.print(curPVal);
-      Serial.println("%%");
+      Serial.print(":");
+      Serial.println(curPVal);
       
       oldPVals[i] = curPVal;
     }
