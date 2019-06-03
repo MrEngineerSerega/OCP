@@ -24,6 +24,12 @@ namespace OCP
         static MetroProgressSpinner[] relativePot0 = new MetroProgressSpinner[8];
         public delegate void InvokeDelegate();
 
+        static int map(int x, int in_min, int in_max, int out_min, int out_max)
+        {
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
+
         public form1()
         {
             InitializeComponent();
@@ -63,6 +69,11 @@ namespace OCP
                                 case "Громкость устройства":
                                     XElement audioDeviceID = effect.Element("audioDeviceID");
                                     Effects.SetVolumeDevice(int.Parse(audioDeviceID.Value), int.Parse(val));
+                                    break;
+                                case "Яркость монитора":
+                                    XElement brtMin = effect.Element("brtMin");
+                                    XElement brtMax = effect.Element("brtMax");
+                                    Effects.SetBrightness(map(int.Parse(val), 0, 100, int.Parse(brtMin.Value), int.Parse(brtMax.Value)));
                                     break;
                             }
                         }

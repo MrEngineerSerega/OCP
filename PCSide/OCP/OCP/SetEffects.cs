@@ -26,20 +26,21 @@ namespace OCP
 
         private void ComboBox_effect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ComboBox_effect.Text == "Громкость устройства")
+            switch (ComboBox_effect.Text)
             {
-                var deviceEnum = new MMDeviceEnumerator();
-                var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active).ToList();
+                case "Громкость устройства":
+                    var deviceEnum = new MMDeviceEnumerator();
+                    var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active).ToList();
 
-                foreach (MMDevice device in devices)
-                {
-                    ComboBox_audioDevice.Items.Add(device.FriendlyName);
-                }
-                SetTLP(1);
-            }
-            else
-            {
-                SetTLP(0);
+                    foreach (MMDevice device in devices)
+                    {
+                        ComboBox_audioDevice.Items.Add(device.FriendlyName);
+                    }
+                    SetTLP(1);
+                    break;
+                case "Яркость монитора":
+                    SetTLP(2);
+                    break;
             }
         }
 
@@ -71,14 +72,13 @@ namespace OCP
             XAttribute position = new XAttribute("position", ComboBox_position.Items.IndexOf(ComboBox_position.Text));
             XAttribute effectName = new XAttribute("effectName", ComboBox_effect.Text);
             XElement audioDeviceID = new XElement("audioDeviceID", ComboBox_audioDevice.Items.IndexOf(ComboBox_audioDevice.Text));
-            XElement K = new XElement("K");
+            XElement brtMin = new XElement("brtMin", TextBox_brtMin.Text);
+            XElement brtMax = new XElement("brtMax", TextBox_brtMax.Text);
 
-            effect.Add(category, position, effectName, audioDeviceID, K);
+            effect.Add(category, position, effectName, audioDeviceID, brtMin, brtMax);
             effects.Add(effect);
 
             xDoc.Save("effects.xml");
-
-            Effects Effects = new Effects();
         }
     }
 }
