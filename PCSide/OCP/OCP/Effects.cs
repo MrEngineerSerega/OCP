@@ -36,7 +36,7 @@ namespace OCP
         {
             var deviceEnum = new MMDeviceEnumerator();
             var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active).ToList();
-            devices[2].AudioEndpointVolume.MasterVolumeLevelScalar = value / 100.00f;
+            devices[deviceID].AudioEndpointVolume.MasterVolumeLevelScalar = value / 100.00f;
         }
         public void SetBrightness(int brightness)
         {
