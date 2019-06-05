@@ -4,12 +4,17 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using NAudio.CoreAudioApi;
+using OpenHardwareMonitor.Hardware;
 
 namespace OCP
 {
     class Effects
     {
+        Computer c = new Computer();
+        public int redColor = 128, greenColor = 128, blueColor = 128, allColor = 0;
+
         [DllImport("user32.dll")]
         static extern IntPtr GetDC(IntPtr hWnd);
 
@@ -40,21 +45,112 @@ namespace OCP
         }
         public void SetBrightness(int brightness)
         {
+            allColor = brightness;
             IntPtr DC = GetDC(GetDesktopWindow());
             RAMP _Rp = new RAMP();
 
             GetDeviceGammaRamp(DC, ref _Rp);
             for (int i = 0; i < 256; i++)
             {
-                int value = i * (brightness + 128);
+                int valueR = i * (brightness + redColor);
+                int valueG = i * (brightness + greenColor);
+                int valueB = i * (brightness + blueColor);
+
+                if (valueR + redColor > 65535)
+                    valueR = 65535 - redColor;
+                if (valueG + greenColor > 65535)
+                    valueG = 65535 - greenColor;
+                if (valueB + blueColor > 65535)
+                    valueB = 65535 - blueColor;
+
+                _Rp.Red[i] = Convert.ToUInt16(valueR);
+                _Rp.Green[i] = Convert.ToUInt16(valueG);
+                _Rp.Blue[i] = Convert.ToUInt16(valueB);
+            }
+
+            SetDeviceGammaRamp(DC, ref _Rp);
+        }
+        public void SetRedColor(int brightness)
+        {
+            redColor = brightness;
+            IntPtr DC = GetDC(GetDesktopWindow());
+            RAMP _Rp = new RAMP();
+
+            GetDeviceGammaRamp(DC, ref _Rp);
+            for (int i = 0; i < 256; i++)
+            {
+                int value = i * (brightness + allColor);
 
                 if (value > 65535)
                     value = 65535;
 
-                _Rp.Red[i] = _Rp.Green[i] = _Rp.Blue[i] = Convert.ToUInt16(value);
+                _Rp.Red[i] = Convert.ToUInt16(value);
             }
 
             SetDeviceGammaRamp(DC, ref _Rp);
+        }
+        public void SetGreenColor(int brightness)
+        {
+            greenColor = brightness;
+            IntPtr DC = GetDC(GetDesktopWindow());
+            RAMP _Rp = new RAMP();
+
+            GetDeviceGammaRamp(DC, ref _Rp);
+            for (int i = 0; i < 256; i++)
+            {
+                int value = i * (brightness + allColor);
+
+                if (value > 65535)
+                    value = 65535;
+
+                _Rp.Green[i] = Convert.ToUInt16(value);
+            }
+
+            SetDeviceGammaRamp(DC, ref _Rp);
+        }
+        public void SetBlueColor(int brightness)
+        {
+            blueColor = brightness;
+            IntPtr DC = GetDC(GetDesktopWindow());
+            RAMP _Rp = new RAMP();
+
+            GetDeviceGammaRamp(DC, ref _Rp);
+            for (int i = 0; i < 256; i++)
+            {
+                int value = i * (brightness + allColor);
+
+                if (value > 65535)
+                    value = 65535;
+
+                _Rp.Blue[i] = Convert.ToUInt16(value);
+            }
+
+            SetDeviceGammaRamp(DC, ref _Rp);
+        }
+        public void ReobasFStart()
+        {
+            c.GPUEnabled = true;
+            c.CPUEnabled = true;
+            c.FanControllerEnabled = true;
+            c.HDDEnabled = true;
+            c.MainboardEnabled = true;
+            c.RAMEnabled = true;
+            c.Open();
+        }
+        public void SetFanSpeed(int speed)
+        {
+            foreach (var hardware in c.Hardware)
+            {
+                //hardware.Update();
+                foreach (var sensor in hardware.Sensors)
+                {
+                    if (sensor.SensorType == SensorType.Control)
+                    {
+                        sensor.Control.SetSoftware(speed);
+                    }
+                }
+
+            }
         }
     }
 }

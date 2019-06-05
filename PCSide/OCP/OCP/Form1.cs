@@ -29,7 +29,7 @@ namespace OCP
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
-
+        
         public form1()
         {
             InitializeComponent();
@@ -37,6 +37,7 @@ namespace OCP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Effects.ReobasFStart();
             relativePot0 = new MetroProgressSpinner[] { metroProgressSpinner1, metroProgressSpinner2, metroProgressSpinner3, metroProgressSpinner4, metroProgressSpinner5, metroProgressSpinner6, metroProgressSpinner7, metroProgressSpinner7 };
             thSetPot.Start();
         }
@@ -74,6 +75,29 @@ namespace OCP
                                     XElement brtMin = effect.Element("brtMin");
                                     XElement brtMax = effect.Element("brtMax");
                                     Effects.SetBrightness(map(int.Parse(val), 0, 100, int.Parse(brtMin.Value), int.Parse(brtMax.Value)));
+                                    break;
+                                case "Цветовая гамма":
+                                    XElement gammaMin = effect.Element("gammaMin");
+                                    XElement gammaMax = effect.Element("gammaMax");
+                                    XElement gammaColor = effect.Element("gammaColor");
+                                    switch (gammaColor.Value)
+                                    {
+                                        case "R":
+                                            Effects.SetRedColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                            break;
+                                        case "G":
+                                            Effects.SetGreenColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                            break;
+                                        case "B":
+                                            Effects.SetBlueColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                            break;
+                                    }
+                                    break;
+                                case "Реобас":
+                                    XElement reobasFanID = effect.Element("reobasFanID");
+                                    XElement reobasMin = effect.Element("reobasMin");
+                                    XElement reobasMax = effect.Element("reobasMax");
+                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, int.Parse(reobasMin.Value), int.Parse(reobasMax.Value)));
                                     break;
                             }
                         }

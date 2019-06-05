@@ -45,15 +45,35 @@
             this.ComboBox_audioDevice = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_brtMin = new MetroFramework.Controls.MetroTextBox();
             this.TextBox_brtMax = new MetroFramework.Controls.MetroTextBox();
+            this.TextBox_brtMin = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.TextBox_gammaMax = new MetroFramework.Controls.MetroTextBox();
+            this.TextBox_gammaMin = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.RadioButton_gammaB = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioButton_gammaG = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioButton_gammaR = new MetroFramework.Controls.MetroRadioButton();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.ComboBox_reobasFan = new MetroFramework.Controls.MetroComboBox();
+            this.Label = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_reobasMax = new MetroFramework.Controls.MetroTextBox();
+            this.TextBox_reobasMin = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.tableLayoutPanel_effects.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+            this.metroPanel3.SuspendLayout();
+            this.metroPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -139,7 +159,8 @@
             this.ComboBox_effect.Items.AddRange(new object[] {
             "Громкость устройства",
             "Яркость монитора",
-            "Чувствительность мыши"});
+            "Цветовая гамма",
+            "Реобас"});
             this.ComboBox_effect.Location = new System.Drawing.Point(96, 197);
             this.ComboBox_effect.Name = "ComboBox_effect";
             this.ComboBox_effect.Size = new System.Drawing.Size(208, 29);
@@ -182,12 +203,16 @@
             this.tableLayoutPanel_effects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel_effects.ColumnCount = 3;
+            this.tableLayoutPanel_effects.ColumnCount = 5;
             this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel1, 1, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel2, 2, 0);
+            this.tableLayoutPanel_effects.Controls.Add(this.metroPanel3, 3, 0);
+            this.tableLayoutPanel_effects.Controls.Add(this.metroPanel4, 4, 0);
             this.tableLayoutPanel_effects.Location = new System.Drawing.Point(24, 271);
             this.tableLayoutPanel_effects.Name = "tableLayoutPanel_effects";
             this.tableLayoutPanel_effects.RowCount = 1;
@@ -248,24 +273,19 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // metroLabel7
+            // TextBox_brtMax
             // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(8, 4);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(79, 19);
-            this.metroLabel7.TabIndex = 2;
-            this.metroLabel7.Text = "Диапозон: ";
+            this.TextBox_brtMax.Location = new System.Drawing.Point(78, 60);
+            this.TextBox_brtMax.Name = "TextBox_brtMax";
+            this.TextBox_brtMax.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_brtMax.TabIndex = 4;
             // 
-            // metroLabel8
+            // TextBox_brtMin
             // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(23, 30);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(40, 19);
-            this.metroLabel8.TabIndex = 3;
-            this.metroLabel8.Text = "Мин.";
+            this.TextBox_brtMin.Location = new System.Drawing.Point(78, 26);
+            this.TextBox_brtMin.Name = "TextBox_brtMin";
+            this.TextBox_brtMin.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_brtMin.TabIndex = 4;
             // 
             // metroLabel9
             // 
@@ -276,19 +296,213 @@
             this.metroLabel9.TabIndex = 3;
             this.metroLabel9.Text = "Макс.";
             // 
-            // TextBox_brtMin
+            // metroLabel8
             // 
-            this.TextBox_brtMin.Location = new System.Drawing.Point(78, 26);
-            this.TextBox_brtMin.Name = "TextBox_brtMin";
-            this.TextBox_brtMin.Size = new System.Drawing.Size(75, 23);
-            this.TextBox_brtMin.TabIndex = 4;
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(23, 30);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel8.TabIndex = 3;
+            this.metroLabel8.Text = "Мин.";
             // 
-            // TextBox_brtMax
+            // metroLabel7
             // 
-            this.TextBox_brtMax.Location = new System.Drawing.Point(78, 60);
-            this.TextBox_brtMax.Name = "TextBox_brtMax";
-            this.TextBox_brtMax.Size = new System.Drawing.Size(75, 23);
-            this.TextBox_brtMax.TabIndex = 4;
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel7.Location = new System.Drawing.Point(8, 4);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel7.TabIndex = 2;
+            this.metroLabel7.Text = "Диапозон: ";
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.Controls.Add(this.TextBox_gammaMax);
+            this.metroPanel3.Controls.Add(this.TextBox_gammaMin);
+            this.metroPanel3.Controls.Add(this.metroLabel11);
+            this.metroPanel3.Controls.Add(this.metroLabel12);
+            this.metroPanel3.Controls.Add(this.metroLabel13);
+            this.metroPanel3.Controls.Add(this.metroLabel10);
+            this.metroPanel3.Controls.Add(this.RadioButton_gammaB);
+            this.metroPanel3.Controls.Add(this.RadioButton_gammaG);
+            this.metroPanel3.Controls.Add(this.RadioButton_gammaR);
+            this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(1, 283);
+            this.metroPanel3.TabIndex = 9;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // TextBox_gammaMax
+            // 
+            this.TextBox_gammaMax.Location = new System.Drawing.Point(343, 60);
+            this.TextBox_gammaMax.Name = "TextBox_gammaMax";
+            this.TextBox_gammaMax.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_gammaMax.TabIndex = 8;
+            // 
+            // TextBox_gammaMin
+            // 
+            this.TextBox_gammaMin.Location = new System.Drawing.Point(343, 26);
+            this.TextBox_gammaMin.Name = "TextBox_gammaMin";
+            this.TextBox_gammaMin.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_gammaMin.TabIndex = 9;
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(288, 64);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel11.TabIndex = 6;
+            this.metroLabel11.Text = "Макс.";
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(288, 30);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel12.TabIndex = 7;
+            this.metroLabel12.Text = "Мин.";
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel13.Location = new System.Drawing.Point(273, 4);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel13.TabIndex = 5;
+            this.metroLabel13.Text = "Диапозон: ";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(8, 4);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(42, 19);
+            this.metroLabel10.TabIndex = 3;
+            this.metroLabel10.Text = "Цвет:";
+            // 
+            // RadioButton_gammaB
+            // 
+            this.RadioButton_gammaB.AutoSize = true;
+            this.RadioButton_gammaB.Location = new System.Drawing.Point(18, 70);
+            this.RadioButton_gammaB.Name = "RadioButton_gammaB";
+            this.RadioButton_gammaB.Size = new System.Drawing.Size(59, 15);
+            this.RadioButton_gammaB.TabIndex = 2;
+            this.RadioButton_gammaB.TabStop = true;
+            this.RadioButton_gammaB.Text = "Синий";
+            this.RadioButton_gammaB.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_gammaG
+            // 
+            this.RadioButton_gammaG.AutoSize = true;
+            this.RadioButton_gammaG.Location = new System.Drawing.Point(18, 49);
+            this.RadioButton_gammaG.Name = "RadioButton_gammaG";
+            this.RadioButton_gammaG.Size = new System.Drawing.Size(72, 15);
+            this.RadioButton_gammaG.TabIndex = 2;
+            this.RadioButton_gammaG.TabStop = true;
+            this.RadioButton_gammaG.Text = "Зелёный";
+            this.RadioButton_gammaG.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_gammaR
+            // 
+            this.RadioButton_gammaR.AutoSize = true;
+            this.RadioButton_gammaR.Location = new System.Drawing.Point(18, 28);
+            this.RadioButton_gammaR.Name = "RadioButton_gammaR";
+            this.RadioButton_gammaR.Size = new System.Drawing.Size(72, 15);
+            this.RadioButton_gammaR.TabIndex = 2;
+            this.RadioButton_gammaR.TabStop = true;
+            this.RadioButton_gammaR.Text = "Красный";
+            this.RadioButton_gammaR.UseVisualStyleBackColor = true;
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.Controls.Add(this.TextBox_reobasMax);
+            this.metroPanel4.Controls.Add(this.TextBox_reobasMin);
+            this.metroPanel4.Controls.Add(this.metroLabel14);
+            this.metroPanel4.Controls.Add(this.metroLabel15);
+            this.metroPanel4.Controls.Add(this.metroLabel16);
+            this.metroPanel4.Controls.Add(this.Label);
+            this.metroPanel4.Controls.Add(this.ComboBox_reobasFan);
+            this.metroPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(1, 283);
+            this.metroPanel4.TabIndex = 10;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // ComboBox_reobasFan
+            // 
+            this.ComboBox_reobasFan.FormattingEnabled = true;
+            this.ComboBox_reobasFan.ItemHeight = 23;
+            this.ComboBox_reobasFan.Location = new System.Drawing.Point(69, 25);
+            this.ComboBox_reobasFan.Name = "ComboBox_reobasFan";
+            this.ComboBox_reobasFan.Size = new System.Drawing.Size(208, 29);
+            this.ComboBox_reobasFan.TabIndex = 2;
+            // 
+            // Label
+            // 
+            this.Label.AutoSize = true;
+            this.Label.Location = new System.Drawing.Point(18, 27);
+            this.Label.Name = "Label";
+            this.Label.Size = new System.Drawing.Size(50, 19);
+            this.Label.TabIndex = 3;
+            this.Label.Text = "Кулер: ";
+            // 
+            // TextBox_reobasMax
+            // 
+            this.TextBox_reobasMax.Location = new System.Drawing.Point(93, 126);
+            this.TextBox_reobasMax.Name = "TextBox_reobasMax";
+            this.TextBox_reobasMax.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_reobasMax.TabIndex = 13;
+            // 
+            // TextBox_reobasMin
+            // 
+            this.TextBox_reobasMin.Location = new System.Drawing.Point(93, 92);
+            this.TextBox_reobasMin.Name = "TextBox_reobasMin";
+            this.TextBox_reobasMin.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_reobasMin.TabIndex = 14;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(38, 130);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel14.TabIndex = 11;
+            this.metroLabel14.Text = "Макс.";
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(38, 96);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel15.TabIndex = 12;
+            this.metroLabel15.Text = "Мин.";
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel16.Location = new System.Drawing.Point(23, 70);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel16.TabIndex = 10;
+            this.metroLabel16.Text = "Диапозон: ";
             // 
             // SetEffects
             // 
@@ -318,6 +532,10 @@
             this.metroPanel1.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
+            this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
+            this.metroPanel4.ResumeLayout(false);
+            this.metroPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +564,23 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
+        private MetroFramework.Controls.MetroTextBox TextBox_gammaMax;
+        private MetroFramework.Controls.MetroTextBox TextBox_gammaMin;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroRadioButton RadioButton_gammaB;
+        private MetroFramework.Controls.MetroRadioButton RadioButton_gammaG;
+        private MetroFramework.Controls.MetroRadioButton RadioButton_gammaR;
+        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private MetroFramework.Controls.MetroLabel Label;
+        private MetroFramework.Controls.MetroComboBox ComboBox_reobasFan;
+        private MetroFramework.Controls.MetroTextBox TextBox_reobasMax;
+        private MetroFramework.Controls.MetroTextBox TextBox_reobasMin;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
     }
 }
