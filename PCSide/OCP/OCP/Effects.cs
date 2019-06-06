@@ -149,6 +149,16 @@ namespace OCP
                         sensor.Control.SetSoftware(speed);
                     }
                 }
+                foreach (var subHard in hardware.SubHardware)
+                {
+                    foreach (var sensor in subHard.Sensors)
+                    {
+                        if (sensor.SensorType == SensorType.Control)
+                        {
+                            sensor.Control.SetSoftware(speed);
+                        }
+                    }
+                }
 
             }
         }

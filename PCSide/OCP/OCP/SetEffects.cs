@@ -64,6 +64,19 @@ namespace OCP
                                 ComboBox_reobasFan.Items.Add(sensor.Identifier.ToString());
                             }
                         }
+                        if (hardware.SubHardware.Length > 0)
+                        {
+                            foreach(var subHard in hardware.SubHardware)
+                            {
+                                foreach (var sensor in subHard.Sensors)
+                                {
+                                    if (sensor.SensorType == SensorType.Control)
+                                    {
+                                        ComboBox_reobasFan.Items.Add(sensor.Identifier.ToString());
+                                    }
+                                }
+                            }
+                        }
                     }
                     SetTLP(4);
                     break;
