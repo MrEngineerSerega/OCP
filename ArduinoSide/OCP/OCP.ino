@@ -1,12 +1,3 @@
-/**
- * This example demonstrates how to read analog signals
- * It assumes there are potentiometers connected
- * to the 16 channels of the 74HC4067 mux/demux
- * 
- * For more about the interface of the library go to
- * https://github.com/pAIgn10/MUX74HC4067
- */
-
 #include "MUX74HC4067.h"
 
 int oldPVals[16], curPVal;
