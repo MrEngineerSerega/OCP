@@ -12,6 +12,7 @@ using System.Threading;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace OCP
 {
@@ -115,6 +116,22 @@ namespace OCP
                                 if(val[0] == muteEvent.Value[0])
                                 {
                                     Effects.Mute(int.Parse(muteAudioDeviceID.Value));
+                                }
+                                break;
+                            case "Запуск файла":
+                                XElement runFile = effect.Element("runFile");
+                                XElement runFileEvent = effect.Element("runFileEvent");
+                                if (val[0] == runFileEvent.Value[0])
+                                {
+                                    Process.Start(runFile.Value);
+                                }
+                                break;
+                            case "Сочетание клавиш":
+                                XElement keybSh = effect.Element("keybSh");
+                                XElement keybEvent = effect.Element("keybEvent");
+                                if (val[0] == keybEvent.Value[0])
+                                {
+                                    SendKeys.SendWait(keybSh.Value);
                                 }
                                 break;
                         }

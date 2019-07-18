@@ -73,6 +73,19 @@
             this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_muteEvent = new MetroFramework.Controls.MetroComboBox();
+            this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_RunFile = new MetroFramework.Controls.MetroTextBox();
+            this.Button_runBrowse = new MetroFramework.Controls.MetroButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ComboBox_runFileEvent = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel7 = new MetroFramework.Controls.MetroPanel();
+            this.ComboBox_keybEvent = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel8 = new MetroFramework.Controls.MetroPanel();
+            this.TextBox_keybSh = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.tableLayoutPanel_effects.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -80,6 +93,9 @@
             this.metroPanel3.SuspendLayout();
             this.metroPanel4.SuspendLayout();
             this.metroPanel5.SuspendLayout();
+            this.metroPanel6.SuspendLayout();
+            this.metroPanel7.SuspendLayout();
+            this.metroPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -119,6 +135,7 @@
             this.ComboBox_category.Name = "ComboBox_category";
             this.ComboBox_category.Size = new System.Drawing.Size(46, 29);
             this.ComboBox_category.TabIndex = 2;
+            this.ComboBox_category.SelectedIndexChanged += new System.EventHandler(this.ComboBox_category_SelectedIndexChanged);
             // 
             // metroLabel3
             // 
@@ -162,12 +179,6 @@
             this.ComboBox_effect.DisplayMember = "nn";
             this.ComboBox_effect.FormattingEnabled = true;
             this.ComboBox_effect.ItemHeight = 23;
-            this.ComboBox_effect.Items.AddRange(new object[] {
-            "Громкость устройства",
-            "Яркость монитора",
-            "Цветовая гамма",
-            "Реобас",
-            "Mute"});
             this.ComboBox_effect.Location = new System.Drawing.Point(96, 197);
             this.ComboBox_effect.Name = "ComboBox_effect";
             this.ComboBox_effect.Size = new System.Drawing.Size(208, 29);
@@ -210,18 +221,22 @@
             this.tableLayoutPanel_effects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel_effects.ColumnCount = 6;
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnCount = 8;
             this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel1, 1, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel2, 2, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel3, 3, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel4, 4, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel5, 5, 0);
+            this.tableLayoutPanel_effects.Controls.Add(this.metroPanel6, 6, 0);
+            this.tableLayoutPanel_effects.Controls.Add(this.metroPanel7, 7, 0);
             this.tableLayoutPanel_effects.Location = new System.Drawing.Point(24, 271);
             this.tableLayoutPanel_effects.Name = "tableLayoutPanel_effects";
             this.tableLayoutPanel_effects.RowCount = 1;
@@ -237,7 +252,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel1.Location = new System.Drawing.Point(519, 3);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(1, 283);
             this.metroPanel1.TabIndex = 7;
@@ -274,7 +289,7 @@
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel2.Location = new System.Drawing.Point(519, 3);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(1, 283);
             this.metroPanel2.TabIndex = 8;
@@ -339,7 +354,7 @@
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel3.Location = new System.Drawing.Point(519, 3);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(1, 283);
             this.metroPanel3.TabIndex = 9;
@@ -445,7 +460,7 @@
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel4.Location = new System.Drawing.Point(519, 3);
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.Size = new System.Drawing.Size(1, 283);
             this.metroPanel4.TabIndex = 10;
@@ -523,9 +538,9 @@
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel5.Location = new System.Drawing.Point(519, 3);
             this.metroPanel5.Name = "metroPanel5";
-            this.metroPanel5.Size = new System.Drawing.Size(510, 283);
+            this.metroPanel5.Size = new System.Drawing.Size(1, 283);
             this.metroPanel5.TabIndex = 11;
             this.metroPanel5.VerticalScrollbarBarColor = true;
             this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
@@ -573,6 +588,151 @@
             this.ComboBox_muteEvent.Size = new System.Drawing.Size(233, 29);
             this.ComboBox_muteEvent.TabIndex = 5;
             // 
+            // metroPanel6
+            // 
+            this.metroPanel6.Controls.Add(this.ComboBox_runFileEvent);
+            this.metroPanel6.Controls.Add(this.metroLabel20);
+            this.metroPanel6.Controls.Add(this.Button_runBrowse);
+            this.metroPanel6.Controls.Add(this.TextBox_RunFile);
+            this.metroPanel6.Controls.Add(this.metroLabel19);
+            this.metroPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel6.HorizontalScrollbarBarColor = true;
+            this.metroPanel6.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel6.HorizontalScrollbarSize = 10;
+            this.metroPanel6.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel6.Name = "metroPanel6";
+            this.metroPanel6.Size = new System.Drawing.Size(1, 283);
+            this.metroPanel6.TabIndex = 12;
+            this.metroPanel6.VerticalScrollbarBarColor = true;
+            this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel6.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.Location = new System.Drawing.Point(18, 86);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel19.TabIndex = 2;
+            this.metroLabel19.Text = "Файл: ";
+            // 
+            // TextBox_RunFile
+            // 
+            this.TextBox_RunFile.Location = new System.Drawing.Point(69, 86);
+            this.TextBox_RunFile.Name = "TextBox_RunFile";
+            this.TextBox_RunFile.Size = new System.Drawing.Size(395, 23);
+            this.TextBox_RunFile.TabIndex = 3;
+            // 
+            // Button_runBrowse
+            // 
+            this.Button_runBrowse.Location = new System.Drawing.Point(470, 86);
+            this.Button_runBrowse.Name = "Button_runBrowse";
+            this.Button_runBrowse.Size = new System.Drawing.Size(23, 23);
+            this.Button_runBrowse.TabIndex = 4;
+            this.Button_runBrowse.Text = "֍";
+            this.Button_runBrowse.Click += new System.EventHandler(this.Button_runBrowse_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // ComboBox_runFileEvent
+            // 
+            this.ComboBox_runFileEvent.FormattingEnabled = true;
+            this.ComboBox_runFileEvent.ItemHeight = 23;
+            this.ComboBox_runFileEvent.Items.AddRange(new object[] {
+            "Click",
+            "Single",
+            "Double",
+            "Triple",
+            "Holded"});
+            this.ComboBox_runFileEvent.Location = new System.Drawing.Point(105, 33);
+            this.ComboBox_runFileEvent.Name = "ComboBox_runFileEvent";
+            this.ComboBox_runFileEvent.Size = new System.Drawing.Size(233, 29);
+            this.ComboBox_runFileEvent.TabIndex = 7;
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(18, 33);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel20.TabIndex = 6;
+            this.metroLabel20.Text = "Событие: ";
+            // 
+            // metroPanel7
+            // 
+            this.metroPanel7.Controls.Add(this.metroPanel8);
+            this.metroPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel7.HorizontalScrollbarBarColor = true;
+            this.metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel7.HorizontalScrollbarSize = 10;
+            this.metroPanel7.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel7.Name = "metroPanel7";
+            this.metroPanel7.Size = new System.Drawing.Size(1, 283);
+            this.metroPanel7.TabIndex = 13;
+            this.metroPanel7.VerticalScrollbarBarColor = true;
+            this.metroPanel7.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel7.VerticalScrollbarSize = 10;
+            // 
+            // ComboBox_keybEvent
+            // 
+            this.ComboBox_keybEvent.FormattingEnabled = true;
+            this.ComboBox_keybEvent.ItemHeight = 23;
+            this.ComboBox_keybEvent.Items.AddRange(new object[] {
+            "Click",
+            "Single",
+            "Double",
+            "Triple",
+            "Holded"});
+            this.ComboBox_keybEvent.Location = new System.Drawing.Point(105, 33);
+            this.ComboBox_keybEvent.Name = "ComboBox_keybEvent";
+            this.ComboBox_keybEvent.Size = new System.Drawing.Size(233, 29);
+            this.ComboBox_keybEvent.TabIndex = 7;
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(18, 33);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel21.TabIndex = 6;
+            this.metroLabel21.Text = "Событие: ";
+            // 
+            // metroPanel8
+            // 
+            this.metroPanel8.Controls.Add(this.ComboBox_keybEvent);
+            this.metroPanel8.Controls.Add(this.metroLabel21);
+            this.metroPanel8.Controls.Add(this.TextBox_keybSh);
+            this.metroPanel8.Controls.Add(this.metroLabel22);
+            this.metroPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel8.HorizontalScrollbarBarColor = true;
+            this.metroPanel8.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel8.HorizontalScrollbarSize = 10;
+            this.metroPanel8.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel8.Name = "metroPanel8";
+            this.metroPanel8.Size = new System.Drawing.Size(1, 283);
+            this.metroPanel8.TabIndex = 13;
+            this.metroPanel8.VerticalScrollbarBarColor = true;
+            this.metroPanel8.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel8.VerticalScrollbarSize = 10;
+            // 
+            // TextBox_keybSh
+            // 
+            this.TextBox_keybSh.Location = new System.Drawing.Point(105, 86);
+            this.TextBox_keybSh.Name = "TextBox_keybSh";
+            this.TextBox_keybSh.Size = new System.Drawing.Size(233, 23);
+            this.TextBox_keybSh.TabIndex = 3;
+            // 
+            // metroLabel22
+            // 
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.Location = new System.Drawing.Point(18, 86);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(82, 19);
+            this.metroLabel22.TabIndex = 2;
+            this.metroLabel22.Text = "Сочетание: ";
+            // 
             // SetEffects
             // 
             this.AcceptButton = this.btn_ok;
@@ -595,7 +755,6 @@
             this.Name = "SetEffects";
             this.Resizable = false;
             this.Text = "SetEffects";
-            this.Load += new System.EventHandler(this.SetEffects_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.tableLayoutPanel_effects.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
@@ -608,6 +767,11 @@
             this.metroPanel4.PerformLayout();
             this.metroPanel5.ResumeLayout(false);
             this.metroPanel5.PerformLayout();
+            this.metroPanel6.ResumeLayout(false);
+            this.metroPanel6.PerformLayout();
+            this.metroPanel7.ResumeLayout(false);
+            this.metroPanel8.ResumeLayout(false);
+            this.metroPanel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,5 +823,18 @@
         private MetroFramework.Controls.MetroLabel metroLabel17;
         private MetroFramework.Controls.MetroComboBox ComboBox_muteEvent;
         private MetroFramework.Controls.MetroLabel metroLabel18;
+        private MetroFramework.Controls.MetroPanel metroPanel6;
+        private MetroFramework.Controls.MetroButton Button_runBrowse;
+        private MetroFramework.Controls.MetroTextBox TextBox_RunFile;
+        private MetroFramework.Controls.MetroLabel metroLabel19;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private MetroFramework.Controls.MetroComboBox ComboBox_runFileEvent;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
+        private MetroFramework.Controls.MetroPanel metroPanel7;
+        private MetroFramework.Controls.MetroPanel metroPanel8;
+        private MetroFramework.Controls.MetroComboBox ComboBox_keybEvent;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroTextBox TextBox_keybSh;
+        private MetroFramework.Controls.MetroLabel metroLabel22;
     }
 }

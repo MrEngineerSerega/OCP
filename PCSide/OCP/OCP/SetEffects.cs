@@ -20,6 +20,8 @@ namespace OCP
 {
     public partial class SetEffects : MetroForm
     {
+        string[] PotEffects = new string[] { "Громкость устройства", "Яркость монитора", "Цветовая гамма", "Реобас" };
+        string[] ButtEffects = new string[] { "Mute", "Запуск файла", "Сочетание клавиш"};
         public SetEffects()
         {
             InitializeComponent();
@@ -87,6 +89,12 @@ namespace OCP
                     }
                     SetTLP(5);
                     break;
+                case "Запуск файла":
+                    SetTLP(6);
+                    break;
+                case "Сочетание клавиш":
+                    SetTLP(7);
+                    break;
                 default:
                     SetTLP(0);
                     break;
@@ -143,16 +151,37 @@ namespace OCP
             XElement reobasFanID = new XElement("reobasFanID", ComboBox_reobasFan.Text);
             XElement reobasMin = new XElement("reobasMin", TextBox_reobasMin.Text);
             XElement reobasMax = new XElement("reobasMax", TextBox_reobasMax.Text);
+            XElement runFile = new XElement("runFile", TextBox_RunFile.Text);
+            XElement runFileEvent = new XElement("runFileEvent", ComboBox_runFileEvent.Items.IndexOf(ComboBox_runFileEvent.Text));
+            XElement keybSh = new XElement("keybSh", TextBox_keybSh.Text);
+            XElement keybEvent = new XElement("keybEvent", ComboBox_keybEvent.Items.IndexOf(ComboBox_keybEvent.Text));
 
-            effect.Add(category, position, effectName, audioDeviceID, muteAudioDeviceID, muteEvent, brtMin, brtMax, gammaMin, gammaMax, gammaColor, reobasFanID, reobasMin, reobasMax);
+            effect.Add(category, position, effectName, audioDeviceID, muteAudioDeviceID, muteEvent, brtMin, brtMax, gammaMin, gammaMax, gammaColor, reobasFanID, reobasMin, reobasMax, runFile, runFileEvent, keybSh, keybEvent);
             effects.Add(effect);
 
             xDoc.Save("effects.xml");
         }
 
-        private void SetEffects_Load(object sender, EventArgs e)
+        private void ComboBox_category_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(int.Parse(ComboBox_category.Text) < 3)
+            {
+                ComboBox_effect.Items.Clear();
+                ComboBox_effect.Items.AddRange(PotEffects);
+            }
+            else
+            {
+                ComboBox_effect.Items.Clear();
+                ComboBox_effect.Items.AddRange(ButtEffects);
+            }
+        }
 
+        private void Button_runBrowse_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                TextBox_RunFile.Text = openFileDialog1.FileName;
+            }
         }
     }
 }
