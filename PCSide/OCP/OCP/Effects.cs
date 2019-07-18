@@ -43,6 +43,12 @@ namespace OCP
             var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active).ToList();
             devices[deviceID].AudioEndpointVolume.MasterVolumeLevelScalar = value / 100.00f;
         }
+        public void Mute(int deviceID)
+        {
+            var deviceEnum = new MMDeviceEnumerator();
+            var devices = deviceEnum.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active).ToList();
+            devices[deviceID].AudioEndpointVolume.Mute = !devices[deviceID].AudioEndpointVolume.Mute;
+        }
         public void SetBrightness(int brightness)
         {
             allColor = brightness;

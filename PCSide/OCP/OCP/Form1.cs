@@ -17,11 +17,12 @@ namespace OCP
 {
     public partial class form1 : MetroForm
     {
-        static SerialPort Serial = new SerialPort("COM4", 9600);
+        static SerialPort Serial = new SerialPort("COM5", 9600);
         static XDocument xDoc = XDocument.Load("effects.xml");
         static Effects Effects = new Effects();
         Thread thSetPot = new Thread(SetPot);
-        static MetroProgressSpinner[] relativePot0 = new MetroProgressSpinner[8];
+        static MetroProgressSpinner[] relativePot0;
+        static Button[] relativeButt;
         public delegate void InvokeDelegate();
 
         static int map(int x, int in_min, int in_max, int out_min, int out_max)
@@ -39,6 +40,7 @@ namespace OCP
         {
             Effects.ReobasFStart();
             relativePot0 = new MetroProgressSpinner[] { metroProgressSpinner1, metroProgressSpinner2, metroProgressSpinner3, metroProgressSpinner4, metroProgressSpinner5, metroProgressSpinner6, metroProgressSpinner7, metroProgressSpinner7 };
+            relativeButt = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9 };
             thSetPot.Start();
         }
 
@@ -47,63 +49,77 @@ namespace OCP
             Serial.Open();
             while (true)
             {
-                try
+                string data = Serial.ReadLine();
+                string ch = data.Split(':')[0];
+                string val = data.Split(':')[1];
+
+                if (ch[0] == '0') {
+                    relativePot0[int.Parse(ch[1].ToString())].BeginInvoke(new MethodInvoker(delegate { relativePot0[int.Parse(ch[1].ToString())].Value = int.Parse(val); }));
+                }else if(ch[0] == '2' && val[0] == '0')
                 {
-                    string data = Serial.ReadLine();
-                    string ch = data.Split(':')[0];
-                    string val = data.Split(':')[1];
-
-                    if (ch[0] == '0') {
-                        relativePot0[int.Parse(ch[1].ToString())].BeginInvoke(new MethodInvoker(delegate { relativePot0[int.Parse(ch[1].ToString())].Value = int.Parse(val); }));
-                    }
-
-                    foreach (XElement effect in xDoc.Element("effects").Elements("effect"))
+                    if(relativeButt[int.Parse(ch[1].ToString())].BackColor == Color.DimGray)
                     {
-                        XAttribute category = effect.Attribute("category");
-                        XAttribute position = effect.Attribute("position");
-                        XAttribute effectName = effect.Attribute("effectName");
+                        relativeButt[int.Parse(ch[1].ToString())].BeginInvoke(new MethodInvoker(delegate { relativeButt[int.Parse(ch[1].ToString())].BackColor = Color.DarkGreen; }));
+                    }
+                    else
+                    {
+                        relativeButt[int.Parse(ch[1].ToString())].BeginInvoke(new MethodInvoker(delegate { relativeButt[int.Parse(ch[1].ToString())].BackColor = Color.DimGray; }));
+                    }
+                }
 
-                        if (ch == category.Value + position.Value)
+                foreach (XElement effect in xDoc.Element("effects").Elements("effect"))
+                {
+                    XAttribute category = effect.Attribute("category");
+                    XAttribute position = effect.Attribute("position");
+                    XAttribute effectName = effect.Attribute("effectName");
+
+                    if (ch == category.Value + position.Value)
+                    {
+                        switch (effectName.Value)
                         {
-                            switch (effectName.Value)
-                            {
-                                case "Громкость устройства":
-                                    XElement audioDeviceID = effect.Element("audioDeviceID");
-                                    Effects.SetVolumeDevice(int.Parse(audioDeviceID.Value), int.Parse(val));
-                                    break;
-                                case "Яркость монитора":
-                                    XElement brtMin = effect.Element("brtMin");
-                                    XElement brtMax = effect.Element("brtMax");
-                                    Effects.SetBrightness(map(int.Parse(val), 0, 100, int.Parse(brtMin.Value), int.Parse(brtMax.Value)));
-                                    break;
-                                case "Цветовая гамма":
-                                    XElement gammaMin = effect.Element("gammaMin");
-                                    XElement gammaMax = effect.Element("gammaMax");
-                                    XElement gammaColor = effect.Element("gammaColor");
-                                    switch (gammaColor.Value)
-                                    {
-                                        case "R":
-                                            Effects.SetRedColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                            break;
-                                        case "G":
-                                            Effects.SetGreenColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                            break;
-                                        case "B":
-                                            Effects.SetBlueColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                            break;
-                                    }
-                                    break;
-                                case "Реобас":
-                                    XElement reobasFanID = effect.Element("reobasFanID");
-                                    XElement reobasMin = effect.Element("reobasMin");
-                                    XElement reobasMax = effect.Element("reobasMax");
-                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, int.Parse(reobasMin.Value), int.Parse(reobasMax.Value)));
-                                    break;
-                            }
+                            case "Громкость устройства":
+                                XElement audioDeviceID = effect.Element("audioDeviceID");
+                                Effects.SetVolumeDevice(int.Parse(audioDeviceID.Value), int.Parse(val));
+                                break;
+                            case "Яркость монитора":
+                                XElement brtMin = effect.Element("brtMin");
+                                XElement brtMax = effect.Element("brtMax");
+                                Effects.SetBrightness(map(int.Parse(val), 0, 100, int.Parse(brtMin.Value), int.Parse(brtMax.Value)));
+                                break;
+                            case "Цветовая гамма":
+                                XElement gammaMin = effect.Element("gammaMin");
+                                XElement gammaMax = effect.Element("gammaMax");
+                                XElement gammaColor = effect.Element("gammaColor");
+                                switch (gammaColor.Value)
+                                {
+                                    case "R":
+                                        Effects.SetRedColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                        break;
+                                    case "G":
+                                        Effects.SetGreenColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                        break;
+                                    case "B":
+                                        Effects.SetBlueColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
+                                        break;
+                                }
+                                break;
+                            case "Реобас":
+                                XElement reobasFanID = effect.Element("reobasFanID");
+                                XElement reobasMin = effect.Element("reobasMin");
+                                XElement reobasMax = effect.Element("reobasMax");
+                                Effects.SetFanSpeed(map(int.Parse(val), 0, 100, int.Parse(reobasMin.Value), int.Parse(reobasMax.Value)));
+                                break;
+                            case "Mute":
+                                XElement muteAudioDeviceID = effect.Element("muteAudioDeviceID");
+                                XElement muteEvent = effect.Element("muteEvent");
+                                if(val[0] == muteEvent.Value[0])
+                                {
+                                    Effects.Mute(int.Parse(muteAudioDeviceID.Value));
+                                }
+                                break;
                         }
                     }
                 }
-                catch (Exception) { }
             }
         }
 

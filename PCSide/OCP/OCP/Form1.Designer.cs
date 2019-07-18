@@ -63,7 +63,6 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.btn_SetEffects = new MetroFramework.Controls.MetroButton();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.waveformPainter1 = new NAudio.Gui.WaveformPainter();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).BeginInit();
@@ -189,9 +188,9 @@
             this.button2.Enabled = false;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(119, 316);
+            this.button2.Location = new System.Drawing.Point(119, 314);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 27);
+            this.button2.Size = new System.Drawing.Size(30, 30);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -489,21 +488,11 @@
             this.metroStyleManager1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // waveformPainter1
-            // 
-            this.waveformPainter1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.waveformPainter1.Location = new System.Drawing.Point(266, 433);
-            this.waveformPainter1.Name = "waveformPainter1";
-            this.waveformPainter1.Size = new System.Drawing.Size(352, 23);
-            this.waveformPainter1.TabIndex = 6;
-            this.waveformPainter1.Text = "waveformPainter1";
-            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 479);
-            this.Controls.Add(this.waveformPainter1);
             this.Controls.Add(this.btn_SetEffects);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.trackBar9);
@@ -594,7 +583,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroButton btn_SetEffects;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
-        private NAudio.Gui.WaveformPainter waveformPainter1;
     }
 }
 

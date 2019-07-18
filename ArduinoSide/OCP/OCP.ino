@@ -1,7 +1,7 @@
 #include "MUX74HC4067.h"
 #include "GyverButton.h"
 
-int oldPVals[16], curPVal;
+int oldPVals[16], curPVal, oldBVals[8];
 
 MUX74HC4067 mux(7, 8, 9, 10, 11);
 GButton butt0(2);
@@ -18,19 +18,19 @@ void loop()
 {
   butt0.tick();
   if(butt0.isClick()){
-    Serial.println("300");
+    Serial.println("20:0");
   }
   if(butt0.isSingle()){
-    Serial.println("301");
+    Serial.println("20:1");
   }
   if(butt0.isDouble()){
-    Serial.println("302");
+    Serial.println("20:2");
   }
   if(butt0.isTriple()){
-    Serial.println("303");
+    Serial.println("20:3");
   }
   if(butt0.isHolded()){
-    Serial.println("304");
+    Serial.println("20:4");
   }
 //  for (byte i = 0; i < 16; ++i)
 //  {
