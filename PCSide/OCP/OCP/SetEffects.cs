@@ -20,7 +20,6 @@ namespace OCP
 {
     public partial class SetEffects : MetroForm
     {
-        згидшс
         public SetEffects()
         {
             InitializeComponent();
