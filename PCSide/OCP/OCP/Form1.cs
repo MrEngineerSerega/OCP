@@ -13,13 +13,15 @@ using MetroFramework.Forms;
 using MetroFramework.Controls;
 using System.Xml.Linq;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace OCP
 {
     public partial class form1 : MetroForm
     {
         static SerialPort Serial = new SerialPort("COM5", 9600);
-        static XDocument xDoc = XDocument.Load("effects.xml");
+        static EffectsFile effects = JsonConvert.DeserializeObject<EffectsFile>(File.ReadAllText("effects.json"));
         static Effects Effects = new Effects();
         Thread thSetPot = new Thread(SetPot);
         static MetroProgressSpinner[] relativePot0;
@@ -68,73 +70,61 @@ namespace OCP
                     }
                 }
 
-                foreach (XElement effect in xDoc.Element("effects").Elements("effect"))
+                foreach(Effect effect in effects.Effects)
                 {
-                    XAttribute category = effect.Attribute("category");
-                    XAttribute position = effect.Attribute("position");
-                    XAttribute effectName = effect.Attribute("effectName");
-
-                    if (ch == category.Value + position.Value)
+                    if(ch == effect.Category.ToString() + effect.Position.ToString())
                     {
-                        switch (effectName.Value)
+                        try
                         {
-                            case "Громкость устройства":
-                                XElement audioDeviceID = effect.Element("audioDeviceID");
-                                Effects.SetVolumeDevice(int.Parse(audioDeviceID.Value), int.Parse(val));
-                                break;
-                            case "Яркость монитора":
-                                XElement brtMin = effect.Element("brtMin");
-                                XElement brtMax = effect.Element("brtMax");
-                                Effects.SetBrightness(map(int.Parse(val), 0, 100, int.Parse(brtMin.Value), int.Parse(brtMax.Value)));
-                                break;
-                            case "Цветовая гамма":
-                                XElement gammaMin = effect.Element("gammaMin");
-                                XElement gammaMax = effect.Element("gammaMax");
-                                XElement gammaColor = effect.Element("gammaColor");
-                                switch (gammaColor.Value)
+                            if (effect.Category < 2)
+                            {
+                                if (effect.PotEffect.Volume.Selected)
                                 {
-                                    case "R":
-                                        Effects.SetRedColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                        break;
-                                    case "G":
-                                        Effects.SetGreenColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                        break;
-                                    case "B":
-                                        Effects.SetBlueColor(map(int.Parse(val), 0, 100, int.Parse(gammaMin.Value), int.Parse(gammaMax.Value)));
-                                        break;
+                                    Effects.SetVolumeDevice(int.Parse(effect.PotEffect.Volume.AudioDeviceID), map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
-                                break;
-                            case "Реобас":
-                                XElement reobasFanID = effect.Element("reobasFanID");
-                                XElement reobasMin = effect.Element("reobasMin");
-                                XElement reobasMax = effect.Element("reobasMax");
-                                Effects.SetFanSpeed(map(int.Parse(val), 0, 100, int.Parse(reobasMin.Value), int.Parse(reobasMax.Value)));
-                                break;
-                            case "Mute":
-                                XElement muteAudioDeviceID = effect.Element("muteAudioDeviceID");
-                                XElement muteEvent = effect.Element("muteEvent");
-                                if(val[0] == muteEvent.Value[0])
+                                if (effect.PotEffect.Brightness.Selected)
                                 {
-                                    Effects.Mute(int.Parse(muteAudioDeviceID.Value));
+                                    Effects.SetBrightness(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
-                                break;
-                            case "Запуск файла":
-                                XElement runFile = effect.Element("runFile");
-                                XElement runFileEvent = effect.Element("runFileEvent");
-                                if (val[0] == runFileEvent.Value[0])
+                                if (effect.PotEffect.Gamma.Selected)
                                 {
-                                    Process.Start(runFile.Value);
+                                    switch (effect.PotEffect.Gamma.Color)
+                                    {
+                                        case 'R':
+                                            Effects.SetRedColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            break;
+                                        case 'G':
+                                            Effects.SetGreenColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            break;
+                                        case 'B':
+                                            Effects.SetBlueColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            break;
+                                    }
                                 }
-                                break;
-                            case "Сочетание клавиш":
-                                XElement keybSh = effect.Element("keybSh");
-                                XElement keybEvent = effect.Element("keybEvent");
-                                if (val[0] == keybEvent.Value[0])
+                                if (effect.PotEffect.Reobas.Selected)
                                 {
-                                    SendKeys.SendWait(keybSh.Value);
+                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
-                                break;
-                        }
+                            }
+                            else
+                            {
+                                if (val[0].ToString() == effect.ButtEffect.EventType.ToString())
+                                {
+                                    if (effect.ButtEffect.Mute.Selected)
+                                    {
+                                        Effects.Mute(int.Parse(effect.ButtEffect.Mute.AudioDeviceID));
+                                    }
+                                    if (effect.ButtEffect.RunFile.Selected)
+                                    {
+                                        Process.Start(effect.ButtEffect.RunFile.File);
+                                    }
+                                    if (effect.ButtEffect.KeyboardShortcut.Selected)
+                                    {
+                                        SendKeys.SendWait(effect.ButtEffect.KeyboardShortcut.Shortcut);
+                                    }
+                                }
+                            }
+                        }catch(NullReferenceException) { }
                     }
                 }
             }
@@ -146,7 +136,7 @@ namespace OCP
         }
 
         private void Btn_SetEffects_Click(object sender, EventArgs e)
-        {
+        {         
             SetEffects setEffects = new SetEffects();
             setEffects.Show();
         }

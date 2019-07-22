@@ -15,6 +15,7 @@ using System.IO;
 using System.Xml.Linq;
 using NAudio.CoreAudioApi;
 using OpenHardwareMonitor.Hardware;
+using Newtonsoft.Json;
 
 namespace OCP
 {
@@ -39,12 +40,18 @@ namespace OCP
                     {
                         ComboBox_audioDevice.Items.Add(device.FriendlyName);
                     }
+                    TextBox_min.Text = "0";
+                    TextBox_max.Text = "100";
                     SetTLP(1);
                     break;
                 case "Яркость монитора":
+                    TextBox_min.Text = "0";
+                    TextBox_max.Text = "255";
                     SetTLP(2);
                     break;
                 case "Цветовая гамма":
+                    TextBox_min.Text = "0";
+                    TextBox_max.Text = "255";
                     SetTLP(3);
                     break;
                 case "Реобас":
@@ -80,6 +87,8 @@ namespace OCP
                             }
                         }
                     }
+                    TextBox_min.Text = "0";
+                    TextBox_max.Text = "100";
                     SetTLP(4);
                     break;
                 case "Mute":
@@ -113,6 +122,14 @@ namespace OCP
             }
             tableLayoutPanel_effects.ColumnStyles[page].Width = 100;
         }
+        void SetTLPM(int page)
+        {
+            for (int i = 0; i < tableLayoutPanel_BOP.ColumnStyles.Count; i++)
+            {
+                tableLayoutPanel_BOP.ColumnStyles[i].Width = 0;
+            }
+            tableLayoutPanel_BOP.ColumnStyles[page].Width = 100;
+        }
 
         private void Btn_cancel_Click(object sender, EventArgs e)
         {
@@ -121,58 +138,71 @@ namespace OCP
 
         private void Btn_ok_Click(object sender, EventArgs e)
         {
-            string gammaNColor = "";
+            char gammaNColor = ' ';
             if (RadioButton_gammaR.Checked)
             {
-                gammaNColor = "R";
+                gammaNColor = 'R';
             }else if (RadioButton_gammaG.Checked)
             {
-                gammaNColor = "G";
+                gammaNColor = 'G';
             }else if(RadioButton_gammaB.Checked)
             {
-                gammaNColor = "B";
+                gammaNColor = 'B';
             }
 
-            XDocument xDoc = XDocument.Load("effects.xml");
+            EffectsFile effects = JsonConvert.DeserializeObject<EffectsFile>(File.ReadAllText("effects.json"));
 
-            XElement effects = xDoc.Element("effects");
-            XElement effect = new XElement("effect");
-            XAttribute category = new XAttribute("category", ComboBox_category.Items.IndexOf(ComboBox_category.Text));
-            XAttribute position = new XAttribute("position", ComboBox_position.Items.IndexOf(ComboBox_position.Text));
-            XAttribute effectName = new XAttribute("effectName", ComboBox_effect.Text);
-            XElement audioDeviceID = new XElement("audioDeviceID", ComboBox_audioDevice.Items.IndexOf(ComboBox_audioDevice.Text));
-            XElement muteAudioDeviceID = new XElement("muteAudioDeviceID", ComboBox_muteAudioDevice.Items.IndexOf(ComboBox_muteAudioDevice.Text));
-            XElement muteEvent = new XElement("muteEvent", ComboBox_muteEvent.Items.IndexOf(ComboBox_muteEvent.Text));
-            XElement brtMin = new XElement("brtMin", TextBox_brtMin.Text);
-            XElement brtMax = new XElement("brtMax", TextBox_brtMax.Text);
-            XElement gammaMin = new XElement("gammaMin", TextBox_gammaMin.Text);
-            XElement gammaMax = new XElement("gammaMax", TextBox_gammaMax.Text);
-            XElement gammaColor = new XElement("gammaColor", gammaNColor);
-            XElement reobasFanID = new XElement("reobasFanID", ComboBox_reobasFan.Text);
-            XElement reobasMin = new XElement("reobasMin", TextBox_reobasMin.Text);
-            XElement reobasMax = new XElement("reobasMax", TextBox_reobasMax.Text);
-            XElement runFile = new XElement("runFile", TextBox_RunFile.Text);
-            XElement runFileEvent = new XElement("runFileEvent", ComboBox_runFileEvent.Items.IndexOf(ComboBox_runFileEvent.Text));
-            XElement keybSh = new XElement("keybSh", TextBox_keybSh.Text);
-            XElement keybEvent = new XElement("keybEvent", ComboBox_keybEvent.Items.IndexOf(ComboBox_keybEvent.Text));
+            Effect effect = new Effect(ComboBox_category.SelectedIndex, ComboBox_position.SelectedIndex);
+            if (ComboBox_category.SelectedIndex < 2)
+            {
+                effect.PotEffect = new PotEffect(int.Parse(TextBox_min.Text), int.Parse(TextBox_max.Text));
+            }
+            else
+            {
+                effect.ButtEffect = new ButtEffect(ComboBox_Event.SelectedIndex);
+            }
+            switch (ComboBox_effect.Text)
+            {
+                case "Громкость устройства":
+                    effect.PotEffect.Volume = new Volume(ComboBox_audioDevice.SelectedIndex.ToString());
+                    break;
+                case "Яркость монитора":
+                    effect.PotEffect.Brightness = new Brightness();
+                    break;
+                case "Цветовая гамма":
+                    effect.PotEffect.Gamma = new Gamma(gammaNColor);
+                    break;
+                case "Реобас":
+                    effect.PotEffect.Reobas = new Reobas(ComboBox_reobasFan.Text);
+                    break;
+                case "Mute":
+                    effect.ButtEffect.Mute = new Mute(ComboBox_muteAudioDevice.SelectedIndex.ToString());
+                    break;
+                case "Запуск файла":
+                    effect.ButtEffect.RunFile = new RunFile(TextBox_RunFile.Text);
+                    break;
+                case "Сочетание клавиш":
+                    effect.ButtEffect.KeyboardShortcut = new KeyboardShortcut(TextBox_keybSh.Text);
+                    break;
+            }
 
-            effect.Add(category, position, effectName, audioDeviceID, muteAudioDeviceID, muteEvent, brtMin, brtMax, gammaMin, gammaMax, gammaColor, reobasFanID, reobasMin, reobasMax, runFile, runFileEvent, keybSh, keybEvent);
-            effects.Add(effect);
-
-            xDoc.Save("effects.xml");
+            effects.Effects.Add(effect);
+            File.WriteAllText("effects.json", JsonConvert.SerializeObject(effects));
         }
 
         private void ComboBox_category_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(int.Parse(ComboBox_category.Text) < 3)
+            if(ComboBox_category.SelectedIndex < 2)
             {
                 ComboBox_effect.Items.Clear();
                 ComboBox_effect.Items.AddRange(PotEffects);
+                SetTLPM(1);
             }
             else
             {
                 ComboBox_effect.Items.Clear();
                 ComboBox_effect.Items.AddRange(ButtEffects);
+                SetTLPM(2);
             }
         }
 
