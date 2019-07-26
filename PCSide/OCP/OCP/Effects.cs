@@ -143,7 +143,7 @@ namespace OCP
             c.RAMEnabled = true;
             c.Open();
         }
-        public void SetFanSpeed(int speed)
+        public void SetFanSpeed(int speed, string id)
         {
             foreach (var hardware in c.Hardware)
             {
@@ -161,7 +161,10 @@ namespace OCP
                     {
                         if (sensor.SensorType == SensorType.Control)
                         {
-                            sensor.Control.SetSoftware(speed);
+                            if (sensor.Identifier.ToString() == id)
+                            {
+                                sensor.Control.SetSoftware(speed);
+                            }
                         }
                     }
                 }

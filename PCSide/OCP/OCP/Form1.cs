@@ -103,7 +103,7 @@ namespace OCP
                                 }
                                 if (effect.PotEffect.Reobas != null)
                                 {
-                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max), effect.PotEffect.Reobas.FanID);
                                 }
                             }
                             else
