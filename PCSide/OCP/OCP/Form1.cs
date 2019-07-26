@@ -78,15 +78,15 @@ namespace OCP
                         {
                             if (effect.Category < 2)
                             {
-                                if (effect.PotEffect.Volume.Selected)
+                                if (effect.PotEffect.Volume != null)
                                 {
                                     Effects.SetVolumeDevice(int.Parse(effect.PotEffect.Volume.AudioDeviceID), map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
-                                if (effect.PotEffect.Brightness.Selected)
+                                if (effect.PotEffect.Brightness != null)
                                 {
                                     Effects.SetBrightness(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
-                                if (effect.PotEffect.Gamma.Selected)
+                                if (effect.PotEffect.Gamma != null)
                                 {
                                     switch (effect.PotEffect.Gamma.Color)
                                     {
@@ -101,7 +101,7 @@ namespace OCP
                                             break;
                                     }
                                 }
-                                if (effect.PotEffect.Reobas.Selected)
+                                if (effect.PotEffect.Reobas != null)
                                 {
                                     Effects.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
@@ -110,15 +110,15 @@ namespace OCP
                             {
                                 if (val[0].ToString() == effect.ButtEffect.EventType.ToString())
                                 {
-                                    if (effect.ButtEffect.Mute.Selected)
+                                    if (effect.ButtEffect.Mute != null)
                                     {
                                         Effects.Mute(int.Parse(effect.ButtEffect.Mute.AudioDeviceID));
                                     }
-                                    if (effect.ButtEffect.RunFile.Selected)
+                                    if (effect.ButtEffect.RunFile != null)
                                     {
                                         Process.Start(effect.ButtEffect.RunFile.File);
                                     }
-                                    if (effect.ButtEffect.KeyboardShortcut.Selected)
+                                    if (effect.ButtEffect.KeyboardShortcut != null)
                                     {
                                         SendKeys.SendWait(effect.ButtEffect.KeyboardShortcut.Shortcut);
                                     }
@@ -136,7 +136,7 @@ namespace OCP
         }
 
         private void Btn_SetEffects_Click(object sender, EventArgs e)
-        {         
+        {
             SetEffects setEffects = new SetEffects();
             setEffects.Show();
         }

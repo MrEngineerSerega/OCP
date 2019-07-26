@@ -45,57 +45,49 @@ namespace OCP
 
     class Volume
     {
-        public Volume() { Selected = true; }
-        public Volume(string audioDeviceID) { Selected = true; AudioDeviceID = audioDeviceID; }
+        public Volume() { }
+        public Volume(string audioDeviceID) { AudioDeviceID = audioDeviceID; }
 
-        public bool Selected { get; set; }
         public string AudioDeviceID { get; set; }
     }
     class Brightness
     {
-        public Brightness() { Selected = true; }
-
-        public bool Selected { get; set; }
+        public Brightness() { }
     }
     class Gamma
     {
-        public Gamma() { Selected = true; }
-        public Gamma(char color) { Selected = true; Color = color; }
+        public Gamma() { }
+        public Gamma(char color) { Color = color; }
 
-        public bool Selected { get; set; }
         public char Color { get; set; }
     }
     class Reobas
     {
-        public Reobas() { Selected = true; }
-        public Reobas(string fanID) { Selected = true; FanID = fanID; }
+        public Reobas() { }
+        public Reobas(string fanID) { FanID = fanID; }
 
-        public bool Selected { get; set; }
         public string FanID { get; set; }
     }
 
     class Mute
     {
-        public Mute() { Selected = true; }
-        public Mute(string audioDeviceID) { Selected = true; AudioDeviceID = audioDeviceID; }
+        public Mute() { }
+        public Mute(string audioDeviceID) { AudioDeviceID = audioDeviceID; }
 
-        public bool Selected { get; set; }
         public string AudioDeviceID { get; set; }
     }
     class RunFile
     {
-        public RunFile() { Selected = true; }
-        public RunFile(string file) { Selected = true; File = file; }
+        public RunFile() { }
+        public RunFile(string file) { File = file; }
 
-        public bool Selected { get; set; }
         public string File { get; set; }
     }
     class KeyboardShortcut
     {
-        public KeyboardShortcut() { Selected = true; }
-        public KeyboardShortcut(string shortcut) { Selected = true; Shortcut = shortcut; }
+        public KeyboardShortcut() { }
+        public KeyboardShortcut(string shortcut) {Shortcut = shortcut; }
 
-        public bool Selected { get; set; }
         public string Shortcut { get; set; }
     }
 }
