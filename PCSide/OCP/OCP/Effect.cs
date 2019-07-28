@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OCP
 {
@@ -41,6 +42,7 @@ namespace OCP
         public Mute Mute { get; set; }
         public RunFile RunFile { get; set; }
         public KeyboardShortcut KeyboardShortcut { get; set; }
+        public MediaButt MediaButt { get; set; }
     }
 
     class Volume
@@ -79,9 +81,10 @@ namespace OCP
     class RunFile
     {
         public RunFile() { }
-        public RunFile(string file) { File = file; }
+        public RunFile(string file, string param) { File = file; Params = param; }
 
         public string File { get; set; }
+        public string Params { get; set; }
     }
     class KeyboardShortcut
     {
@@ -89,5 +92,12 @@ namespace OCP
         public KeyboardShortcut(string shortcut) {Shortcut = shortcut; }
 
         public string Shortcut { get; set; }
+    }
+    class MediaButt
+    {
+        public MediaButt() { }
+        public MediaButt(Keys butt) { Butt = butt; }
+
+        public Keys Butt { get; set; }
     }
 }

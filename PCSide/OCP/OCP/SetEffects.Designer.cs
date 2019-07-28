@@ -57,33 +57,39 @@
             this.Button_runBrowse = new MetroFramework.Controls.MetroButton();
             this.TextBox_RunFile = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.TextBox_keybSh = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tableLayoutPanel_BOP = new System.Windows.Forms.TableLayoutPanel();
-            this.metroPanel9 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_min = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_max = new MetroFramework.Controls.MetroTextBox();
-            this.metroPanel10 = new MetroFramework.Controls.MetroPanel();
-            this.ComboBox_Event = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroPanel7 = new MetroFramework.Controls.MetroPanel();
             this.ComboBox_audioDevice = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tableLayoutPanel_BOP = new System.Windows.Forms.TableLayoutPanel();
+            this.metroPanel9 = new MetroFramework.Controls.MetroPanel();
+            this.TextBox_max = new MetroFramework.Controls.MetroTextBox();
+            this.TextBox_min = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel10 = new MetroFramework.Controls.MetroPanel();
+            this.ComboBox_Event = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_RunParams = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel8 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.ComboBox_MediaButt = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.tableLayoutPanel_effects.SuspendLayout();
             this.metroPanel3.SuspendLayout();
             this.metroPanel4.SuspendLayout();
             this.metroPanel5.SuspendLayout();
             this.metroPanel6.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
+            this.metroPanel7.SuspendLayout();
             this.tableLayoutPanel_BOP.SuspendLayout();
             this.metroPanel9.SuspendLayout();
             this.metroPanel10.SuspendLayout();
-            this.metroPanel1.SuspendLayout();
-            this.metroPanel7.SuspendLayout();
+            this.metroPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -209,15 +215,16 @@
             this.tableLayoutPanel_effects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel_effects.ColumnCount = 8;
+            this.tableLayoutPanel_effects.ColumnCount = 9;
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
+            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
-            this.tableLayoutPanel_effects.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0F));
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel2, 2, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel3, 3, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel4, 4, 0);
@@ -225,6 +232,7 @@
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel6, 6, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel1, 7, 0);
             this.tableLayoutPanel_effects.Controls.Add(this.metroPanel7, 1, 0);
+            this.tableLayoutPanel_effects.Controls.Add(this.metroPanel8, 8, 0);
             this.tableLayoutPanel_effects.Location = new System.Drawing.Point(24, 325);
             this.tableLayoutPanel_effects.Name = "tableLayoutPanel_effects";
             this.tableLayoutPanel_effects.RowCount = 1;
@@ -237,7 +245,7 @@
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel2.Location = new System.Drawing.Point(3, 3);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(1, 283);
             this.metroPanel2.TabIndex = 8;
@@ -255,7 +263,7 @@
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel3.Location = new System.Drawing.Point(3, 3);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(1, 308);
             this.metroPanel3.TabIndex = 9;
@@ -314,7 +322,7 @@
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel4.Location = new System.Drawing.Point(3, 3);
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.Size = new System.Drawing.Size(1, 308);
             this.metroPanel4.TabIndex = 10;
@@ -348,7 +356,7 @@
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
-            this.metroPanel5.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel5.Location = new System.Drawing.Point(3, 3);
             this.metroPanel5.Name = "metroPanel5";
             this.metroPanel5.Size = new System.Drawing.Size(1, 308);
             this.metroPanel5.TabIndex = 11;
@@ -377,13 +385,15 @@
             // metroPanel6
             // 
             this.metroPanel6.Controls.Add(this.Button_runBrowse);
+            this.metroPanel6.Controls.Add(this.TextBox_RunParams);
             this.metroPanel6.Controls.Add(this.TextBox_RunFile);
+            this.metroPanel6.Controls.Add(this.metroLabel7);
             this.metroPanel6.Controls.Add(this.metroLabel19);
             this.metroPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel6.HorizontalScrollbarBarColor = true;
             this.metroPanel6.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel6.HorizontalScrollbarSize = 10;
-            this.metroPanel6.Location = new System.Drawing.Point(519, 3);
+            this.metroPanel6.Location = new System.Drawing.Point(3, 3);
             this.metroPanel6.Name = "metroPanel6";
             this.metroPanel6.Size = new System.Drawing.Size(1, 308);
             this.metroPanel6.TabIndex = 12;
@@ -416,6 +426,22 @@
             this.metroLabel19.TabIndex = 2;
             this.metroLabel19.Text = "Файл: ";
             // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.TextBox_keybSh);
+            this.metroPanel1.Controls.Add(this.metroLabel22);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(1, 308);
+            this.metroPanel1.TabIndex = 13;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
             // TextBox_keybSh
             // 
             this.TextBox_keybSh.Location = new System.Drawing.Point(102, 24);
@@ -431,6 +457,40 @@
             this.metroLabel22.Size = new System.Drawing.Size(82, 19);
             this.metroLabel22.TabIndex = 2;
             this.metroLabel22.Text = "Сочетание: ";
+            // 
+            // metroPanel7
+            // 
+            this.metroPanel7.Controls.Add(this.ComboBox_audioDevice);
+            this.metroPanel7.Controls.Add(this.metroLabel6);
+            this.metroPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel7.HorizontalScrollbarBarColor = true;
+            this.metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel7.HorizontalScrollbarSize = 10;
+            this.metroPanel7.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel7.Name = "metroPanel7";
+            this.metroPanel7.Size = new System.Drawing.Size(1, 308);
+            this.metroPanel7.TabIndex = 14;
+            this.metroPanel7.VerticalScrollbarBarColor = true;
+            this.metroPanel7.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel7.VerticalScrollbarSize = 10;
+            // 
+            // ComboBox_audioDevice
+            // 
+            this.ComboBox_audioDevice.FormattingEnabled = true;
+            this.ComboBox_audioDevice.ItemHeight = 23;
+            this.ComboBox_audioDevice.Location = new System.Drawing.Point(107, 23);
+            this.ComboBox_audioDevice.Name = "ComboBox_audioDevice";
+            this.ComboBox_audioDevice.Size = new System.Drawing.Size(233, 29);
+            this.ComboBox_audioDevice.TabIndex = 7;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(20, 23);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel6.TabIndex = 6;
+            this.metroLabel6.Text = "Устройство:";
             // 
             // openFileDialog1
             // 
@@ -469,15 +529,12 @@
             this.metroPanel9.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel9.VerticalScrollbarSize = 10;
             // 
-            // metroLabel23
+            // TextBox_max
             // 
-            this.metroLabel23.AutoSize = true;
-            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel23.Location = new System.Drawing.Point(23, 16);
-            this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(38, 19);
-            this.metroLabel23.TabIndex = 2;
-            this.metroLabel23.Text = "Min:";
+            this.TextBox_max.Location = new System.Drawing.Point(411, 16);
+            this.TextBox_max.Name = "TextBox_max";
+            this.TextBox_max.Size = new System.Drawing.Size(75, 23);
+            this.TextBox_max.TabIndex = 3;
             // 
             // TextBox_min
             // 
@@ -496,12 +553,15 @@
             this.metroLabel24.TabIndex = 2;
             this.metroLabel24.Text = "Max:";
             // 
-            // TextBox_max
+            // metroLabel23
             // 
-            this.TextBox_max.Location = new System.Drawing.Point(411, 16);
-            this.TextBox_max.Name = "TextBox_max";
-            this.TextBox_max.Size = new System.Drawing.Size(75, 23);
-            this.TextBox_max.TabIndex = 3;
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel23.Location = new System.Drawing.Point(23, 16);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(38, 19);
+            this.metroLabel23.TabIndex = 2;
+            this.metroLabel23.Text = "Min:";
             // 
             // metroPanel10
             // 
@@ -544,55 +604,63 @@
             this.metroLabel25.TabIndex = 6;
             this.metroLabel25.Text = "Событие: ";
             // 
-            // metroPanel1
+            // metroLabel7
             // 
-            this.metroPanel1.Controls.Add(this.TextBox_keybSh);
-            this.metroPanel1.Controls.Add(this.metroLabel22);
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(519, 3);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1, 308);
-            this.metroPanel1.TabIndex = 13;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(15, 70);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(131, 19);
+            this.metroLabel7.TabIndex = 2;
+            this.metroLabel7.Text = "Параметры запуска:";
             // 
-            // metroPanel7
+            // TextBox_RunParams
             // 
-            this.metroPanel7.Controls.Add(this.ComboBox_audioDevice);
-            this.metroPanel7.Controls.Add(this.metroLabel6);
-            this.metroPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel7.HorizontalScrollbarBarColor = true;
-            this.metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel7.HorizontalScrollbarSize = 10;
-            this.metroPanel7.Location = new System.Drawing.Point(519, 3);
-            this.metroPanel7.Name = "metroPanel7";
-            this.metroPanel7.Size = new System.Drawing.Size(1, 308);
-            this.metroPanel7.TabIndex = 14;
-            this.metroPanel7.VerticalScrollbarBarColor = true;
-            this.metroPanel7.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel7.VerticalScrollbarSize = 10;
+            this.TextBox_RunParams.Location = new System.Drawing.Point(152, 70);
+            this.TextBox_RunParams.Name = "TextBox_RunParams";
+            this.TextBox_RunParams.Size = new System.Drawing.Size(309, 23);
+            this.TextBox_RunParams.TabIndex = 3;
             // 
-            // ComboBox_audioDevice
+            // metroPanel8
             // 
-            this.ComboBox_audioDevice.FormattingEnabled = true;
-            this.ComboBox_audioDevice.ItemHeight = 23;
-            this.ComboBox_audioDevice.Location = new System.Drawing.Point(107, 23);
-            this.ComboBox_audioDevice.Name = "ComboBox_audioDevice";
-            this.ComboBox_audioDevice.Size = new System.Drawing.Size(233, 29);
-            this.ComboBox_audioDevice.TabIndex = 7;
+            this.metroPanel8.Controls.Add(this.ComboBox_MediaButt);
+            this.metroPanel8.Controls.Add(this.metroLabel8);
+            this.metroPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel8.HorizontalScrollbarBarColor = true;
+            this.metroPanel8.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel8.HorizontalScrollbarSize = 10;
+            this.metroPanel8.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel8.Name = "metroPanel8";
+            this.metroPanel8.Size = new System.Drawing.Size(510, 308);
+            this.metroPanel8.TabIndex = 15;
+            this.metroPanel8.VerticalScrollbarBarColor = true;
+            this.metroPanel8.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel8.VerticalScrollbarSize = 10;
             // 
-            // metroLabel6
+            // metroLabel8
             // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(20, 23);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(81, 19);
-            this.metroLabel6.TabIndex = 6;
-            this.metroLabel6.Text = "Устройство:";
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(8, 23);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel8.TabIndex = 2;
+            this.metroLabel8.Text = "Кнопка: ";
+            // 
+            // ComboBox_MediaButt
+            // 
+            this.ComboBox_MediaButt.FormattingEnabled = true;
+            this.ComboBox_MediaButt.ItemHeight = 23;
+            this.ComboBox_MediaButt.Items.AddRange(new object[] {
+            "Media",
+            "Play/Pause",
+            "NextTrack",
+            "PreviousTrack",
+            "VolumeMute",
+            "VolumeDown",
+            "VolumeUp"});
+            this.ComboBox_MediaButt.Location = new System.Drawing.Point(66, 23);
+            this.ComboBox_MediaButt.Name = "ComboBox_MediaButt";
+            this.ComboBox_MediaButt.Size = new System.Drawing.Size(173, 29);
+            this.ComboBox_MediaButt.TabIndex = 3;
             // 
             // SetEffects
             // 
@@ -627,15 +695,17 @@
             this.metroPanel5.PerformLayout();
             this.metroPanel6.ResumeLayout(false);
             this.metroPanel6.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
+            this.metroPanel7.ResumeLayout(false);
+            this.metroPanel7.PerformLayout();
             this.tableLayoutPanel_BOP.ResumeLayout(false);
             this.metroPanel9.ResumeLayout(false);
             this.metroPanel9.PerformLayout();
             this.metroPanel10.ResumeLayout(false);
             this.metroPanel10.PerformLayout();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
-            this.metroPanel7.ResumeLayout(false);
-            this.metroPanel7.PerformLayout();
+            this.metroPanel8.ResumeLayout(false);
+            this.metroPanel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -687,5 +757,10 @@
         private MetroFramework.Controls.MetroPanel metroPanel7;
         private MetroFramework.Controls.MetroComboBox ComboBox_audioDevice;
         private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox TextBox_RunParams;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroPanel metroPanel8;
+        private MetroFramework.Controls.MetroComboBox ComboBox_MediaButt;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
     }
 }

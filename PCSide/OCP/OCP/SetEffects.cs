@@ -22,7 +22,7 @@ namespace OCP
     public partial class SetEffects : MetroForm
     {
         string[] PotEffects = new string[] { "Громкость устройства", "Яркость монитора", "Цветовая гамма", "Реобас" };
-        string[] ButtEffects = new string[] { "Mute", "Запуск файла", "Сочетание клавиш"};
+        string[] ButtEffects = new string[] { "Mute", "Запуск файла", "Сочетание клавиш", "Медиа клавиши"};
         public SetEffects()
         {
             InitializeComponent();
@@ -104,6 +104,9 @@ namespace OCP
                 case "Сочетание клавиш":
                     SetTLP(7);
                     break;
+                case "Медиа клавиши":
+                    SetTLP(8);
+                    break;
                 default:
                     SetTLP(0);
                     break;
@@ -179,10 +182,36 @@ namespace OCP
                     effect.ButtEffect.Mute = new Mute(ComboBox_muteAudioDevice.SelectedIndex.ToString());
                     break;
                 case "Запуск файла":
-                    effect.ButtEffect.RunFile = new RunFile(TextBox_RunFile.Text);
+                    effect.ButtEffect.RunFile = new RunFile(TextBox_RunParams.Text, TextBox_RunFile.Text);
                     break;
                 case "Сочетание клавиш":
                     effect.ButtEffect.KeyboardShortcut = new KeyboardShortcut(TextBox_keybSh.Text);
+                    break;
+                case "Медиа клавиши":
+                    switch (ComboBox_MediaButt.SelectedIndex)
+                    {
+                        case 0:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.SelectMedia);
+                            break;
+                        case 1:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.MediaPlayPause);
+                            break;
+                        case 2:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.MediaNextTrack);
+                            break;
+                        case 3:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.MediaPreviousTrack);
+                            break;
+                        case 4:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.VolumeMute);
+                            break;
+                        case 5:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.VolumeDown);
+                            break;
+                        case 6:
+                            effect.ButtEffect.MediaButt = new MediaButt(Keys.VolumeUp);
+                            break;
+                    }
                     break;
             }
 

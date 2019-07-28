@@ -116,11 +116,16 @@ namespace OCP
                                     }
                                     if (effect.ButtEffect.RunFile != null)
                                     {
-                                        Process.Start(effect.ButtEffect.RunFile.File);
+                                        Process.Start(effect.ButtEffect.RunFile.File, effect.ButtEffect.RunFile.Params);
                                     }
                                     if (effect.ButtEffect.KeyboardShortcut != null)
                                     {
                                         SendKeys.SendWait(effect.ButtEffect.KeyboardShortcut.Shortcut);
+                                    }
+                                    if(effect.ButtEffect.MediaButt != null)
+                                    {
+                                        Effects.KeyDown(effect.ButtEffect.MediaButt.Butt);
+                                        Effects.KeyUp(effect.ButtEffect.MediaButt.Butt);
                                     }
                                 }
                             }

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using NAudio.CoreAudioApi;
 using OpenHardwareMonitor.Hardware;
 
@@ -13,10 +14,19 @@ namespace OCP
     class Effects
     {
         Computer c = new Computer();
+
         public int redColor = 128, greenColor = 128, blueColor = 128, allColor = 0;
+        const int KEYEVENTF_EXTENDEDKEY = 1;
+        const int KEYEVENTF_KEYUP = 2;
 
         [DllImport("user32.dll")]
         static extern IntPtr GetDC(IntPtr hWnd);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool LockWorkStation();
+
+        [DllImport("user32.dll")]
+        private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
         [DllImport("user32.dll", EntryPoint = "GetDesktopWindow")]
         public static extern IntPtr GetDesktopWindow();
@@ -171,5 +181,14 @@ namespace OCP
 
             }
         }
+        public static void KeyDown(Keys vKey)
+    {
+        keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY, 0);
+    }
+
+    public static void KeyUp(Keys vKey)
+    {
+        keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+    }
     }
 }
