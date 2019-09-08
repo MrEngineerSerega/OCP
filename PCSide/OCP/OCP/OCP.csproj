@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effect.cs" />
-    <Compile Include="Effects.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

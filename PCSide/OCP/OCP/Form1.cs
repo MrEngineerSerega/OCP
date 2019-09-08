@@ -20,9 +20,8 @@ namespace OCP
 {
     public partial class form1 : MetroForm
     {
-        static SerialPort Serial = new SerialPort("COM5", 9600);
+        static SerialPort Serial = new SerialPort("COM6", 9600);
         static EffectsFile effects = JsonConvert.DeserializeObject<EffectsFile>(File.ReadAllText("effects.json"));
-        static Effects Effects = new Effects();
         Thread thSetPot = new Thread(SetPot);
         static MetroProgressSpinner[] relativePot0;
         static Button[] relativeButt;
@@ -41,7 +40,7 @@ namespace OCP
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Effects.ReobasFStart();
+            new Effect().PotEffect.Reobas.ReobasFStart();
             relativePot0 = new MetroProgressSpinner[] { metroProgressSpinner1, metroProgressSpinner2, metroProgressSpinner3, metroProgressSpinner4, metroProgressSpinner5, metroProgressSpinner6, metroProgressSpinner7, metroProgressSpinner7 };
             relativeButt = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9 };
             thSetPot.Start();
@@ -80,30 +79,29 @@ namespace OCP
                             {
                                 if (effect.PotEffect.Volume != null)
                                 {
-                                    Effects.SetVolumeDevice(int.Parse(effect.PotEffect.Volume.AudioDeviceID), map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
-                                }
-                                if (effect.PotEffect.Brightness != null)
-                                {
-                                    Effects.SetBrightness(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                    effect.PotEffect.Volume.SetVolume(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
                                 if (effect.PotEffect.Gamma != null)
                                 {
                                     switch (effect.PotEffect.Gamma.Color)
                                     {
                                         case 'R':
-                                            Effects.SetRedColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            effect.PotEffect.Gamma.SetRedColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                             break;
                                         case 'G':
-                                            Effects.SetGreenColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            effect.PotEffect.Gamma.SetGreenColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                             break;
                                         case 'B':
-                                            Effects.SetBlueColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            effect.PotEffect.Gamma.SetBlueColor(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
+                                            break;
+                                        case 'A':
+                                            effect.PotEffect.Gamma.SetBrightness(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max)); 
                                             break;
                                     }
                                 }
                                 if (effect.PotEffect.Reobas != null)
                                 {
-                                    Effects.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max), effect.PotEffect.Reobas.FanID);
+                                    effect.PotEffect.Reobas.SetFanSpeed(map(int.Parse(val), 0, 100, effect.PotEffect.Min, effect.PotEffect.Max));
                                 }
                             }
                             else
@@ -112,20 +110,23 @@ namespace OCP
                                 {
                                     if (effect.ButtEffect.Mute != null)
                                     {
-                                        Effects.Mute(int.Parse(effect.ButtEffect.Mute.AudioDeviceID));
+                                        effect.ButtEffect.Mute.ToggleMute();
                                     }
                                     if (effect.ButtEffect.RunFile != null)
                                     {
-                                        Process.Start(effect.ButtEffect.RunFile.File, effect.ButtEffect.RunFile.Params);
+                                        effect.ButtEffect.RunFile.Run();
                                     }
                                     if (effect.ButtEffect.KeyboardShortcut != null)
                                     {
-                                        SendKeys.SendWait(effect.ButtEffect.KeyboardShortcut.Shortcut);
+                                        effect.ButtEffect.KeyboardShortcut.Send();
                                     }
                                     if(effect.ButtEffect.MediaButt != null)
                                     {
-                                        Effects.KeyDown(effect.ButtEffect.MediaButt.Butt);
-                                        Effects.KeyUp(effect.ButtEffect.MediaButt.Butt);
+                                        effect.ButtEffect.MediaButt.Click();
+                                    }
+                                    if(effect.ButtEffect.LockWorkStation != null)
+                                    {
+                                        effect.ButtEffect.LockWorkStation.Lock();
                                     }
                                 }
                             }

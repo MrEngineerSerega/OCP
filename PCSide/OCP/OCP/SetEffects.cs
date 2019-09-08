@@ -22,7 +22,7 @@ namespace OCP
     public partial class SetEffects : MetroForm
     {
         string[] PotEffects = new string[] { "Громкость устройства", "Яркость монитора", "Цветовая гамма", "Реобас" };
-        string[] ButtEffects = new string[] { "Mute", "Запуск файла", "Сочетание клавиш", "Медиа клавиши"};
+        string[] ButtEffects = new string[] { "Mute", "Запуск файла", "Сочетание клавиш", "Медиа клавиши", "Блокировка"};
         public SetEffects()
         {
             InitializeComponent();
@@ -47,12 +47,12 @@ namespace OCP
                 case "Яркость монитора":
                     TextBox_min.Text = "0";
                     TextBox_max.Text = "255";
-                    SetTLP(2);
+                    SetTLP(0);
                     break;
                 case "Цветовая гамма":
                     TextBox_min.Text = "0";
                     TextBox_max.Text = "255";
-                    SetTLP(3);
+                    SetTLP(0);
                     break;
                 case "Реобас":
                     Computer c = new Computer();
@@ -106,6 +106,9 @@ namespace OCP
                     break;
                 case "Медиа клавиши":
                     SetTLP(8);
+                    break;
+                case "Блокировка":
+                    SetTLP(0);
                     break;
                 default:
                     SetTLP(0);
@@ -170,7 +173,7 @@ namespace OCP
                     effect.PotEffect.Volume = new Volume(ComboBox_audioDevice.SelectedIndex.ToString());
                     break;
                 case "Яркость монитора":
-                    effect.PotEffect.Brightness = new Brightness();
+                    effect.PotEffect.Gamma = new Gamma('A');
                     break;
                 case "Цветовая гамма":
                     effect.PotEffect.Gamma = new Gamma(gammaNColor);
@@ -212,6 +215,9 @@ namespace OCP
                             effect.ButtEffect.MediaButt = new MediaButt(Keys.VolumeUp);
                             break;
                     }
+                    break;
+                case "Блокировка":
+                    effect.ButtEffect.LockWorkStation = new LockWorkStation();
                     break;
             }
 
